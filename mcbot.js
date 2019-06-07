@@ -9,7 +9,7 @@ var mcCommand = '/minecraft'; // Command for triggering
 var mcIP = settings.ip; // Your MC server IP
 var mcPort = settings.port; // Your MC server port
 
-var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
+var url = 'https://api.mcsrvstat.us/2/' + mcIP + ':' + mcPort;
 
 
 function update() {
@@ -36,11 +36,11 @@ function update() {
             //.then(console.log)
             .catch(console.error);
           }
-            if(body.players.now) {
-                status = ' ' + body.players.now + '  of  ' + body.players.max;
-              } else {
-                status = ' 0  of  ' + body.players.max;
-        }
+            if(body.online) {
+                status = ': ' + body.players.online + '. Mods: '+ (body.mods.names).length;
+              } 
+
+        
       } else {
         client.user.setStatus('dnd')
         //.then(console.log)

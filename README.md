@@ -1,6 +1,10 @@
 # mcstatusbot
 ### Discord bot for server status
 
+Bot will show Playing: x. Mods: y
+:warning: completely fails with no mods
+api switched to https://api.mcsrvstat.us/
+
 :warning: For settings, please edit `config.json`. 
 
 # Setup
