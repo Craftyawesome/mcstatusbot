@@ -36,9 +36,14 @@ function update() {
             //.then(console.log)
             .catch(console.error);
           }
-            if(body.online) {
+            
+            if(body.mods) {
                 status = ': ' + body.players.online + '. Mods: '+ (body.mods.names).length;
-              } 
+              } else {
+                status = body.players.online + ' of  ' + body.players.max;
+        }              
+
+
 
         
       } else {
