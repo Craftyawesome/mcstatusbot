@@ -4,6 +4,8 @@ const client = new Discord.Client();
 const settings = require('./config.json');
 var statustring = "No signal";
 
+var status2 = 0
+
 var request = require('request');
 var mcCommand = '/minecraft'; // Command for triggering
 var mcIP = settings.ip; // Your MC server IP
@@ -55,7 +57,38 @@ function update() {
       client.user.setActivity(status, { type: 'PLAYING' })
       .then(presence => console.log(status))
       .catch(console.error);
+	  
+	  if(status2 !== status){
+	var generalChannel = client.channels.get("586601216193200150") // Replace with known channel ID
+	if(status == "Server offline"){
+		generalChannel.send("The server is offline") 
+	}
+	else if(body.online){
+		generalChannel.send("There are " + body.players.online + ' of ' + body.players.max + " players currently online. The server is using " + (body.mods.names).length + " mods") 
+	}
+	else{
+		generalChannel.send("bot machine b r o k e")
+	}
+}
+
+
+status2 = status
+	  
+	  
+	  
+	  
   });
+
+
+
+
+
+
+
+
+
+
+
 
 }
 client.on("ready", () => {
